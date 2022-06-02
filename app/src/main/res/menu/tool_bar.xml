@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/settings"
+        android:title="@string/bt_settings"
+        android:icon="@drawable/ic_baseline_settings"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/dark_mode"
+        android:title="@string/bt_dark_mode"
+        android:icon="@drawable/ic_baseline_dark_mode"
+        app:showAsAction="withText"
+        android:visible="true"/>
+
+    <item
+        android:id="@+id/light_mode"
+        android:title="@string/bt_light_mode"
+        android:icon="@drawable/ic_baseline_light_mode"
+        app:showAsAction="withText"
+        android:visible="true"/>
+
+</menu>

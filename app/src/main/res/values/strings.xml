@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">EducationalProject</string>
+
+    <string name="disclaimer">Картинки взяты с https://www.movieposters.com</string>
+    <string name="bt_menu">Меню</string>
+    <string name="bt_favorites">Избранное</string>
+    <string name="bt_watch_later">Посмотреть позже</string>
+    <string name="bt_selections">Подборки</string>
+    <string name="bt_settings">Настройки</string>
+    <string name="page_title">Search it</string>
+    <string name="bt_dark_mode">Темный режим</string>
+    <string name="bt_light_mode">Светлый режим</string>
 </resources>
