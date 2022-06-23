@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
         bindingClass.topAppBar.setOnMenuItemClickListener {
             when (it.itemId) {
                 R.id.settings -> {
-                    Toast.makeText(this, "Настройки", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, R.string.bt_settings, Toast.LENGTH_SHORT).show()
                     true
                 }
 
@@ -42,15 +42,15 @@ class MainActivity : AppCompatActivity() {
 
             when (it.itemId) {
                 R.id.favorites -> {
-                    Toast.makeText(this, "Избранное", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, R.string.bt_favorites, Toast.LENGTH_SHORT).show()
                     true
                 }
                 R.id.watch_later -> {
-                    Toast.makeText(this, "Посмотреть похже", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, R.string.bt_watch_later, Toast.LENGTH_SHORT).show()
                     true
                 }
                 R.id.selections -> {
-                    Toast.makeText(this, "Подборки", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, R.string.bt_selections, Toast.LENGTH_SHORT).show()
                     true
                 }
                 else -> false
