@@ -5,8 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.educationalproject.databinding.FragmentHomeBinding
+import java.util.*
 
 class HomeFragment : Fragment() {
     lateinit var bindingClass : FragmentHomeBinding
@@ -49,5 +51,27 @@ class HomeFragment : Fragment() {
             addItemDecoration(decorator)
         }
         filmsAdapter.addItems(filmsDataBase)
+
+        bindingClass.searchView.setOnClickListener {
+            bindingClass.searchView.isIconified = false
+        }
+
+        bindingClass.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener,
+            androidx.appcompat.widget.SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return true
+            }
+            override fun onQueryTextChange(newText: String): Boolean {
+                if (newText.isEmpty()) {
+                    filmsAdapter.addItems(filmsDataBase)
+                    return true
+                }
+                val result = filmsDataBase.filter {
+                    it.title.toLowerCase(Locale.getDefault()).contains(newText.toLowerCase(Locale.getDefault()))
+                }
+                filmsAdapter.addItems(result)
+                return true
+            }
+        })
     }
 }
