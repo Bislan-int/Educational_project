@@ -1,6 +1,11 @@
 package com.example.educationalproject
 
 import android.os.Bundle
+import android.transition.Scene
+import android.transition.Slide
+import android.transition.TransitionManager
+import android.transition.TransitionSet
+import android.view.Gravity
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -8,10 +13,12 @@ import android.view.ViewGroup
 import android.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.educationalproject.databinding.FragmentHomeBinding
+import com.example.educationalproject.databinding.MergeHomeScreenContentBinding
 import java.util.*
 
 class HomeFragment : Fragment() {
-    lateinit var bindingClass : FragmentHomeBinding
+    lateinit var bindingClass : MergeHomeScreenContentBinding
+    lateinit var binding : FragmentHomeBinding
 
     private lateinit var filmsAdapter: FilmListRecyclerAdapter
 
@@ -28,16 +35,29 @@ class HomeFragment : Fragment() {
         Film("The Wheel of Time", R.drawable.time, "Set in a high fantasy world where magic exists, but only some can access it, a woman named Moiraine crosses paths with five young men and women. This sparks a dangerous, world-spanning journey. Based on the book series by Robert Jordan.")
     )
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_home, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        bindingClass = FragmentHomeBinding.bind(view)
+        bindingClass = MergeHomeScreenContentBinding.inflate(layoutInflater)
+        binding = FragmentHomeBinding.bind(view)
+
+        val scene = Scene.getSceneForLayout(binding.homeFragmentRoot, R.layout.merge_home_screen_content, requireContext())
+        val searchSlide = Slide(Gravity.TOP).addTarget(R.id.search_view)
+//Создаем анимацию выезда RV снизу
+        val recyclerSlide = Slide(Gravity.BOTTOM).addTarget(R.id.main_recycler)
+//Создаем экземпляр TransitionSet, который объединит все наши анимации
+        val customTransition = TransitionSet().apply {
+            //Устанавливаем время, за которое будет проходить анимация
+            duration = 500
+            //Добавляем сами анимации
+            addTransition(recyclerSlide)
+            addTransition(searchSlide)
+        }
+//Также запускаем через TransitionManager, но вторым параметром передаем нашу кастомную анимацию
+        TransitionManager.go(scene, customTransition)
 
         bindingClass.mainRecycler.apply {
             filmsAdapter = FilmListRecyclerAdapter(object : FilmListRecyclerAdapter.OnItemClickListener{
@@ -73,5 +93,20 @@ class HomeFragment : Fragment() {
                 return true
             }
         })
+
     }
+
+//    private fun initRecyckler() {
+//        bindingClass.mainRecycler.apply {
+//            filmsAdapter = FilmListRecyclerAdapter(object : FilmListRecyclerAdapter.OnItemClickListener{
+//                override fun click(film: Film) {
+//                    (requireActivity() as MainActivity).launchDetailsFragment(film)
+//                }
+//            })
+//            adapter = filmsAdapter
+//            layoutManager = LinearLayoutManager(requireContext())
+//            val decorator = TopSpacingItemDecoration(8)
+//            addItemDecoration(decorator)
+//        }
+//    }
 }

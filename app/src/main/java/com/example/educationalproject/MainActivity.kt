@@ -38,6 +38,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initNavigation() {
+
         bindingClass.topAppBar.setOnMenuItemClickListener {
             when (it.itemId) {
                 R.id.settings -> {
@@ -57,6 +58,7 @@ class MainActivity : AppCompatActivity() {
                 else -> false
             }
         }
+
 
         bindingClass.bottomNavigation.setOnNavigationItemSelectedListener {
 
