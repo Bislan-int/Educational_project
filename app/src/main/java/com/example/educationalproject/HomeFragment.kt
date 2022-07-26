@@ -46,17 +46,12 @@ class HomeFragment : Fragment() {
 
         val scene = Scene.getSceneForLayout(binding.homeFragmentRoot, R.layout.merge_home_screen_content, requireContext())
         val searchSlide = Slide(Gravity.TOP).addTarget(R.id.search_view)
-//Создаем анимацию выезда RV снизу
         val recyclerSlide = Slide(Gravity.BOTTOM).addTarget(R.id.main_recycler)
-//Создаем экземпляр TransitionSet, который объединит все наши анимации
         val customTransition = TransitionSet().apply {
-            //Устанавливаем время, за которое будет проходить анимация
             duration = 500
-            //Добавляем сами анимации
             addTransition(recyclerSlide)
             addTransition(searchSlide)
         }
-//Также запускаем через TransitionManager, но вторым параметром передаем нашу кастомную анимацию
         TransitionManager.go(scene, customTransition)
 
         bindingClass.mainRecycler.apply {
@@ -95,18 +90,4 @@ class HomeFragment : Fragment() {
         })
 
     }
-
-//    private fun initRecyckler() {
-//        bindingClass.mainRecycler.apply {
-//            filmsAdapter = FilmListRecyclerAdapter(object : FilmListRecyclerAdapter.OnItemClickListener{
-//                override fun click(film: Film) {
-//                    (requireActivity() as MainActivity).launchDetailsFragment(film)
-//                }
-//            })
-//            adapter = filmsAdapter
-//            layoutManager = LinearLayoutManager(requireContext())
-//            val decorator = TopSpacingItemDecoration(8)
-//            addItemDecoration(decorator)
-//        }
-//    }
 }
