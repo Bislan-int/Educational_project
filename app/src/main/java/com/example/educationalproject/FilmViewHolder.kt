@@ -3,6 +3,7 @@ package com.example.educationalproject
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.example.educationalproject.databinding.FilmItemBinding
+import com.example.educationalproject.databinding.MergeHomeScreenContentBinding
 
 class FilmViewHolder (itemView: View) : RecyclerView.ViewHolder(itemView) {
     val binding = FilmItemBinding.bind(itemView)

@@ -10,9 +10,7 @@ class FilmListRecyclerAdapter(private val clickListener: OnItemClickListener) : 
     override fun getItemCount() = items.size
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-
-        val binding = LayoutInflater.from(parent.context).inflate(R.layout.film_item, parent, false)
-        return FilmViewHolder(binding)
+        return FilmViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.film_item, parent, false))
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {

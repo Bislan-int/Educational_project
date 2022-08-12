@@ -9,15 +9,23 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.educationalproject.databinding.FragmentFavoritesBinding
 
 class FavoritesFragment : Fragment() {
-    lateinit var bindingClass : FragmentFavoritesBinding
+    private lateinit var binding : FragmentFavoritesBinding
     private lateinit var filmsAdapter: FilmListRecyclerAdapter
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+        binding = FragmentFavoritesBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        bindingClass = FragmentFavoritesBinding.bind(view)
         val favoritesList: List<Film> = emptyList()
 
-        bindingClass.favoritesRecycler
+        AnimationHelper.performFragmentCircularRevealAnimation(binding.favoritesFragmentRoot, requireActivity(),2)
+
+        binding.favoritesRecycler
             .apply {
                 filmsAdapter =
                     FilmListRecyclerAdapter(object : FilmListRecyclerAdapter.OnItemClickListener {

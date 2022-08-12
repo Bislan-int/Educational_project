@@ -3,6 +3,7 @@
 
     <string name="disclaimer">Картинки взяты с https://www.movieposters.com</string>
     <string name="bt_menu">Меню</string>
+    <string name="menu_home_title_text">Главная</string>
     <string name="bt_favorites">Избранное</string>
     <string name="bt_watch_later">Посмотреть позже</string>
     <string name="bt_selections">Подборки</string>
