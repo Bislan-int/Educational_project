@@ -1,4 +1,4 @@
-package com.example.educationalproject
+package com.example.educationalproject.utils
 
 import android.app.Activity
 import android.view.View

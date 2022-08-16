@@ -1,4 +1,4 @@
-package com.example.educationalproject
+package com.example.educationalproject.view.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,6 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.educationalproject.databinding.FragmentFavoritesBinding
+import com.example.educationalproject.domain.Film
+import com.example.educationalproject.utils.AnimationHelper
+import com.example.educationalproject.view.rv_adapters.FilmListRecyclerAdapter
+import com.example.educationalproject.view.MainActivity
+import com.example.educationalproject.view.rv_adapters.TopSpacingItemDecoration
 
 class FavoritesFragment : Fragment() {
     private lateinit var binding : FragmentFavoritesBinding
