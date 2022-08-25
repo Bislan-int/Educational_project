@@ -1,11 +1,13 @@
-package com.example.educationalproject
+package com.example.educationalproject.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
+import com.example.educationalproject.R
 import com.example.educationalproject.databinding.ActivityMainBinding
+import com.example.educationalproject.domain.Film
+import com.example.educationalproject.view.fragments.*
 
 class MainActivity : AppCompatActivity() {
     lateinit var bindingClass : ActivityMainBinding
@@ -67,8 +69,6 @@ class MainActivity : AppCompatActivity() {
                 R.id.home -> {
                     val tag = "home"
                     val fragment = checkFragmentExistence(tag)
-                    //В первом параметре, если фрагмент не найден и метод вернул null, то с помощью
-                    //элвиса мы вызываем создание нового фрагмента
                     changeFragment( fragment?: HomeFragment(), tag)
                     true
                 }
@@ -95,7 +95,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    //Ищем фрагмент по тэгу, если он есть то возвращаем его, если нет - то null
     private fun checkFragmentExistence(tag: String): Fragment? = supportFragmentManager.findFragmentByTag(tag)
 
     private fun changeFragment(fragment: Fragment, tag: String) {

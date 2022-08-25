@@ -1,7 +1,10 @@
-package com.example.educationalproject
+package com.example.educationalproject.view.rv_adapters
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.educationalproject.R
+import com.example.educationalproject.domain.Film
+import com.example.educationalproject.view.rv_viewholders.FilmViewHolder
 
 class FilmListRecyclerAdapter(private val clickListener: OnItemClickListener) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 

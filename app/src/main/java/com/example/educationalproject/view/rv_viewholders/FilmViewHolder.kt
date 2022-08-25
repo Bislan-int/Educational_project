@@ -1,9 +1,9 @@
-package com.example.educationalproject
+package com.example.educationalproject.view.rv_viewholders
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.example.educationalproject.databinding.FilmItemBinding
-import com.example.educationalproject.databinding.MergeHomeScreenContentBinding
+import com.example.educationalproject.domain.Film
 
 class FilmViewHolder (itemView: View) : RecyclerView.ViewHolder(itemView) {
     val binding = FilmItemBinding.bind(itemView)

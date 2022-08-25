@@ -1,4 +1,4 @@
-package com.example.educationalproject
+package com.example.educationalproject.view.fragments
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,7 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.example.educationalproject.R
 import com.example.educationalproject.databinding.FragmentDetailsBinding
+import com.example.educationalproject.domain.Film
 
 class DetailsFragment : Fragment() {
     lateinit var bindingClass : FragmentDetailsBinding
