@@ -49,7 +49,7 @@ class HomeFragment : Fragment() {
 
         initSearchView()
 
-        initRecyckler()
+        initRecycler()
         viewModel.filmsListLiveData.observe(viewLifecycleOwner, Observer<List<Film>>{
             filmsDataBase = it
         })
@@ -79,7 +79,7 @@ class HomeFragment : Fragment() {
         })
     }
 
-    private fun initRecyckler() {
+    private fun initRecycler() {
         binding.mainRecycler.apply {
             filmsAdapter = FilmListRecyclerAdapter(object : FilmListRecyclerAdapter.OnItemClickListener {
                 override fun click(film: Film) {
