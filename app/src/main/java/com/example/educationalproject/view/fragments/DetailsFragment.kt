@@ -6,7 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.bumptech.glide.Glide
 import com.example.educationalproject.R
+import com.example.educationalproject.data.ApiConstants
 import com.example.educationalproject.databinding.FragmentDetailsBinding
 import com.example.educationalproject.domain.Film
 
@@ -24,7 +26,10 @@ class DetailsFragment : Fragment() {
         film = arguments?.get("film") as Film
 
         bindingClass.detailsToolbar.title = film.title
-        bindingClass.detailsPoster.setImageResource(film.poster)
+        Glide.with(this)
+            .load(ApiConstants.IMAGES_URL + "w780" + film.poster)
+            .centerCrop()
+            .into(bindingClass.detailsPoster)
         bindingClass.detailsDescription.text = film.description
 
 
