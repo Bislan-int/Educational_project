@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:visibility="invisible"
     tools:visibility="visible"
-    tools:background="@drawable/home_background"
+    android:background="@drawable/home_background"
     tools:context=".view.fragments.HomeFragment">
 
     <androidx.appcompat.widget.SearchView
