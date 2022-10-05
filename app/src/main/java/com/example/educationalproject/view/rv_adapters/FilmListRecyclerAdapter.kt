@@ -8,7 +8,7 @@ import com.example.educationalproject.view.rv_viewholders.FilmViewHolder
 
 class FilmListRecyclerAdapter(private val clickListener: OnItemClickListener) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    private val items = mutableListOf<Film>()
+    val items = mutableListOf<Film>()
 
     override fun getItemCount() = items.size
 

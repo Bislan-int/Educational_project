@@ -41,28 +41,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initNavigation() {
-
-//        bindingClass.topAppBar.setOnMenuItemClickListener {
-//            when (it.itemId) {
-//                R.id.settings -> {
-//                    Toast.makeText(this, R.string.bt_settings, Toast.LENGTH_SHORT).show()
-//                    true
-//                }
-//
-//                R.id.dark_mode -> {
-//                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-//                    true
-//                }
-//
-//                R.id.light_mode -> {
-//                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-//                    true
-//                }
-//                else -> false
-//            }
-//        }
-
-
         bindingClass.bottomNavigation.setOnNavigationItemSelectedListener {
 
             when (it.itemId) {
@@ -88,6 +66,12 @@ class MainActivity : AppCompatActivity() {
                     val tag = "selections"
                     val fragment = checkFragmentExistence(tag)
                     changeFragment( fragment?: SelectionsFragment(), tag)
+                    true
+                }
+                R.id.settings -> {
+                    val tag = "settings"
+                    val fragment = checkFragmentExistence(tag)
+                    changeFragment( fragment?: SettingsFragment(), tag)
                     true
                 }
                 else -> false
