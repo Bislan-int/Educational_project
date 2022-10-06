@@ -48,11 +48,21 @@ class HomeFragment : Fragment() {
         AnimationHelper.performFragmentCircularRevealAnimation(binding.homeFragmentRoot, requireActivity(), 1)
 
         initSearchView()
+        initPullToRefresh()
 
         initRecycler()
         viewModel.filmsListLiveData.observe(viewLifecycleOwner, Observer<List<Film>>{
             filmsDataBase = it
+            filmsAdapter.addItems(it)
         })
+    }
+
+    private fun initPullToRefresh() {
+        binding.pullToRefresh.setOnRefreshListener {
+            filmsAdapter.items.clear()
+            viewModel.getFilms()
+            binding.pullToRefresh.isRefreshing = false
+        }
     }
 
     private fun initSearchView() {

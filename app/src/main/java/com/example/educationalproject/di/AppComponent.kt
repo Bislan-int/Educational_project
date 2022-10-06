@@ -4,6 +4,7 @@ import com.example.educationalproject.di.modules.DatabaseModule
 import com.example.educationalproject.di.modules.DomainModule
 import com.example.educationalproject.di.modules.RemoteModule
 import com.example.educationalproject.viewmodel.HomeFragmentViewModel
+import com.example.educationalproject.viewmodel.SettingsFragmentViewModel
 import dagger.Component
 import javax.inject.Singleton
 
@@ -17,4 +18,5 @@ import javax.inject.Singleton
 )
 interface AppComponent {
     fun inject(homeFragmentViewModel: HomeFragmentViewModel)
+    fun inject(settingsFragmentViewModel: SettingsFragmentViewModel)
 }
