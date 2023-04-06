@@ -1,5 +1,6 @@
 package com.example.educationalproject.domain
 
+import androidx.lifecycle.LiveData
 import com.example.educationalproject.API
 import com.example.educationalproject.data.Entity.TmdbResultsDto
 import com.example.educationalproject.data.MainRepository
@@ -16,10 +17,8 @@ class Interactor(private val repo: MainRepository, private val retrofitService: 
         retrofitService.getFilms(getDefaultCategoryFromPreferences(), API.KEY, "ru-RU", page).enqueue(object : Callback<TmdbResultsDto> {
             override fun onResponse(call: Call<TmdbResultsDto>, response: Response<TmdbResultsDto>) {
                 val list = Converter.convertApiListToDtoList(response.body()?.tmdbFilms)
-                list.forEach {
-                    repo.putToDb(list)
-                }
-                callback.onSuccess(list)
+                repo.putToDb(list)
+                callback.onSuccess()
             }
 
             override fun onFailure(call: Call<TmdbResultsDto>, t: Throwable) {
@@ -33,5 +32,5 @@ class Interactor(private val repo: MainRepository, private val retrofitService: 
     }
 
     fun getDefaultCategoryFromPreferences() = preferences.getDefaultCategory()
-    fun getFilmsFromDB(): List<Film> = repo.getAllFromDB()
+    fun getFilmsFromDB(): LiveData<List<Film>> = repo.getAllFromDB()
 }
